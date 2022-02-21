@@ -1,4 +1,4 @@
-@extends('layouts.app');
+@extends('layouts.dashboard');
 
 {{-- aggiungo una section con il content del main in app --}}
 @section('content')
