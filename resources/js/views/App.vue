@@ -1,13 +1,18 @@
 <template>
     <div>
-        <h1>CIAO SONO VUE IN LARAVEL!!!</h1>
+        <WorkingInProgress />
     </div>
 </template>
 
 <script>
+
+import WorkingInProgress from '../components/WorkingInProgress.vue';
 export default {
 
-    name: 'App'
+    name: 'App',
+    components: {
+        WorkingInProgress
+    }
 
 }
 </script>
