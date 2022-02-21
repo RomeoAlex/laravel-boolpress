@@ -4,7 +4,7 @@
 @section('content')
     <section>
         <div class="container">
-            <h1>Benvenuto nell'area protetta</h1>
+            <h1>Benvenuto {{ $user->name }} nell'area protetta</h1>
 
         </div>
     </section>
