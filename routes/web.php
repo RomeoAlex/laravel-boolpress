@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// cambiando la landing page non ci serve più questa rotta perchè utilizzeremo FRONTOFFICE
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 
 Auth::routes();
 // rotta di default
@@ -31,3 +32,12 @@ Route::middleware('auth')
         Route::get('/','HomeController@index')->name('home');
         
         });
+
+
+// rotta per VUE quando lo implementeremo FRONTOFFICE
+
+Route::get('{any?}', function(){
+    return view('guests.home');
+})->where('any', '.*');
+
+
