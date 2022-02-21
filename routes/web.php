@@ -35,7 +35,7 @@ Route::middleware('auth')
 
 
 // rotta per VUE quando lo implementeremo FRONTOFFICE
-
+// DEVE STARE ALLA FINE DOPO TUTTE LE ALTRE ROTTE
 Route::get('{any?}', function(){
     return view('guests.home');
 })->where('any', '.*');
