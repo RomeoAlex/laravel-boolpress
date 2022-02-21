@@ -18,5 +18,16 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+// rotta di default
+// Route::get('/home', 'HomeController@index')->name('home');
+// rotta che sarebbe da ripetere ogni volta per mandare alle varie pagine che richiedano autenticazione e non siano pubbliche
+// Route::get('/admin', 'Admin\HomeController@index')->name('admin.home');
+// utiliziamo middleware per non riscrivere tutte le volte le singole rotte
+Route::middleware('auth')
+        ->namespace('Admin')
+        ->name('admin.')
+        ->prefix('admin')
+        ->group(function(){
+        Route::get('/','HomeController@index')->name('home');
+        
+        });
