@@ -9,6 +9,9 @@ class HomeController extends Controller
 {
     //funzione per testare
     public function index(){
-        dd('ciao sto testando il controller e la route');
+        // test
+        // dd('ciao sto testando il controller e la route');
+        // metto il return su admin home 
+        return view('admin.home');
     }
 }
