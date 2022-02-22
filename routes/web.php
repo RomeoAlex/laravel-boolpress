@@ -23,6 +23,8 @@ Auth::routes();
 // Route::get('/home', 'HomeController@index')->name('home');
 // rotta che sarebbe da ripetere ogni volta per mandare alle varie pagine che richiedano autenticazione e non siano pubbliche
 // Route::get('/admin', 'Admin\HomeController@index')->name('admin.home');
+
+
 // utiliziamo middleware per non riscrivere tutte le volte le singole rotte
 Route::middleware('auth')
         ->namespace('Admin')
@@ -30,7 +32,8 @@ Route::middleware('auth')
         ->prefix('admin')
         ->group(function(){
         Route::get('/','HomeController@index')->name('home');
-        
+        // rotta per il controller delle CRUD sui post
+        Route::resource('posts', 'PostController');
         });
 
 
