@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Faker\Generator as Faker;
 class PostsTableSeeder extends Seeder
 {
     /**
@@ -9,8 +9,11 @@ class PostsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        //
+        //creo una decina di post
+        for ($i=0; $i < 10; $i++) { 
+            # code...
+        }
     }
 }
