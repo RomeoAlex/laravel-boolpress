@@ -134,7 +134,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->update($form_data);
 
-        return redirect()->route('admin.posts.show', ['post' => $post->id])
+        return redirect()->route('admin.posts.show', ['post' => $post->id]);
     }
 
     /**
@@ -145,7 +145,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect()->route('admin.posts.index');
     }
     // creo funzione per la validazione
     protected function getValidateRules(){
