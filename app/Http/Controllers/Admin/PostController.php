@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+// richiamo il model
+use App\Post;
 
 class PostController extends Controller
 {
@@ -14,7 +16,17 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        // richiamo i post dal database
+        $posts = Post::all();
+        // test dd controllo a video su posts guardare la tebella route:lists
+        // dd($posts);
+
+        // immetto i post richiamati per rimandarli alla view
+        $data = [
+            'posts' => $posts
+        ];
+
+        return view('admin.posts.index', $data );
     }
 
     /**
