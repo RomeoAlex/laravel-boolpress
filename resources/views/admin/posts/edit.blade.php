@@ -22,14 +22,16 @@
 
             <div class="mb-3">
               <label for="title" class="form-label">Titolo</label>
-              <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}">
-              
+              {{-- nella value mettiamo una formula per far vedere la scritta precedente e cambiarla siccome siamo nell'edit --}}
+              {{-- <input type="text" class="form-control" id="title" name="title" value="{{old('title') ? old('title') : $post->title}}"> --}}
+              {{-- utilizziamo il ternario di old --}}
+              <input type="text" class="form-control" id="title" name="title" value="{{old('title', $post->title) }}">
               
             </div>
             <div class="form-floating">
                 
                 <label for="content" class="form-label">Contenuto</label>
-                <textarea class="form-control" id="content" name="content"  value="{{old('content')}}" ></textarea>
+                <textarea class="form-control" id="content" name="content"  value="{{old('title' , $post->content)}}" ></textarea>
                 
               </div>
             <button type="submit" class="btn btn-primary">Submit</button>
