@@ -36,6 +36,9 @@ Route::middleware('auth')
         Route::resource('posts', 'PostController');
             // creo rotta per la index delle categorie
         Route::get('/categories','CategoryController@index')->name('categories');
+        // rotta per le categorie tramite gli slug,devo sempre richiamare il controller e dare un nome
+        // ATTENZIONE ALLA ROUTE DOPO IL CONTROLLER DEVE ESSERCI IL PUNTAMENTO ALLA FUNZIONE CORRETTA!!
+        Route::get('/categories/{slug}','CategoryController@show')->name('category_details');
         });
 
 

@@ -8,7 +8,9 @@
 
             <ul class="list-group">
                 @foreach ($categories as $category)
-                <li class="list-group-item">{{$category->name}}</li>
+                <li class="list-group-item">
+                    <a href="{{route('admin.category_details',['slug' => $category->slug])}}">{{$category->name}}</a>
+                </li>
                     
                 @endforeach
                 
