@@ -34,6 +34,8 @@ Route::middleware('auth')
         Route::get('/','HomeController@index')->name('home');
         // rotta per il controller delle CRUD sui post
         Route::resource('posts', 'PostController');
+            // creo rotta per la index delle categorie
+        Route::get('/categories','CategoryController@index')->name('categories');
         });
 
 
