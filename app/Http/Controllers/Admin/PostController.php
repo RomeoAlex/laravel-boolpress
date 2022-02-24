@@ -130,8 +130,11 @@ class PostController extends Controller
     {
         $form_data = $request->all();
         $request->validate($this->getValidateRules());
-        $form_data['slug'] = $this->getUniqueSlug($form_data['title']);
         $post = Post::findOrFail($id);
+        // mi trovo nella condizione che modificare un post mi aggiunge uno slug aggiuntivo devo creare una condizione
+        if($form_data['title'] !=$post->title ){
+            $form_data['slug'] = $this->getUniqueSlug($form_data['title']);
+        }
         $post->update($form_data);
 
         return redirect()->route('admin.posts.show', ['post' => $post->id]);

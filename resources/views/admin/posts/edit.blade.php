@@ -31,7 +31,7 @@
             <div class="form-floating">
                 
                 <label for="content" class="form-label">Contenuto</label>
-                <textarea class="form-control" id="content" name="content"  value="{{old('title' , $post->content)}}" ></textarea>
+                <textarea class="form-control" id="content" name="content"  value="{{old('content' , $post->content)}}" ></textarea>
                 
               </div>
             <button type="submit" class="btn btn-primary">Submit</button>
