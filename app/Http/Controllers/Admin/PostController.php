@@ -174,7 +174,8 @@ class PostController extends Controller
     protected function getValidateRules(){
         return [
             'title' => 'required|max:255',
-            'content' => 'required|max:60000'
+            'content' => 'required|max:60000',
+            'category_id' => 'exists:category_id'
         ];
     }
     protected function getUniqueSlug($title){
