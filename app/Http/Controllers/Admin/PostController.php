@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // richiamo il model
 use App\Post;
+// richiamo il model
+use App\Category;
 // per slug bisogna importare la funzione di supporto
 use Illuminate\Support\Str;
 class PostController extends Controller
@@ -37,7 +39,14 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        // richiamo le categorie er inserirle nel create form
+        $categories = Category::all();
+
+        $data = [
+            'categories' => $categories
+        ];
+        
+        return view('admin.posts.create', $data);
     }
 
     /**
@@ -117,8 +126,12 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         // test
         // dd($post);
+        $categories = Category::all();
+
+        
         $data = [
-            'post' => $post
+            'post' => $post,
+            'categories' => $categories
         ];
 
         return view('admin.posts.edit', $data);
