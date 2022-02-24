@@ -8,7 +8,16 @@ use App\Category;
 class CategoryController extends Controller
 {
     public function index(){
+
+        $categories = Category::all();
+
+        
+        $data = [
+            
+            'categories' => $categories
+        ];
+
         // view su index 
-        return view('admin.categories.index');
+        return view('admin.categories.index', $data);
     }
 }

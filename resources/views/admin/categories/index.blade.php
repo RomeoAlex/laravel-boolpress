@@ -4,8 +4,15 @@
 @section('content')
     <section>
         <div class="container">
-            <h1>SONO l'indice delle categorie</h1>
+            <h1>Indice delle categorie</h1>
 
+            <ul class="list-group">
+                @foreach ($categories as $category)
+                <li class="list-group-item">{{$category->name}}</li>
+                    
+                @endforeach
+                
+              </ul>
         </div>
     </section>
 @endsection
