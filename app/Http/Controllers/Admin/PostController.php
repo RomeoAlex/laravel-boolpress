@@ -175,7 +175,7 @@ class PostController extends Controller
         return [
             'title' => 'required|max:255',
             'content' => 'required|max:60000',
-            'category_id' => 'exists:category_id'
+            'category_id' => 'exists:category,id|nullable'
         ];
     }
     protected function getUniqueSlug($title){
