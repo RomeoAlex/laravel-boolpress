@@ -23,7 +23,7 @@ class CreateUserInfoTable extends Migration
             // specifiche per la foreign key
             $table->foreign('user_id')
             ->references('id')
-            ->on('user');
+            ->on('users');
             // può essere abbreviato in
             // $table->foreignId('user_id')
             // -constrained();
