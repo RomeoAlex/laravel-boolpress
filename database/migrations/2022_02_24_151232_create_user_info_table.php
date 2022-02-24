@@ -15,7 +15,18 @@ class CreateUserInfoTable extends Migration
     {
         Schema::create('user_info', function (Blueprint $table) {
             $table->id();
+            $table->string('phone', 16);
+            $table->string('adress',255);
+            // creo la foreign key che punterà a user id
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            // specifiche per la foreign key
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('user');
+            // può essere abbreviato in
+            // $table->foreignId('user_id')
+            // -constrained();
         });
     }
 
