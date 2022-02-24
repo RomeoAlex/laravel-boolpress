@@ -6,6 +6,10 @@
             {{-- riporto un singolo post --}}
         <h1> {{$post->title}}</h1>
         <h2 class="text-light bg-dark">Slug: {{$post->slug}}</h2>
+        {{-- accesso su più livelli di annidamento di array associativi ma è una relazione assoluta ed al momento è null perciò non funzionerà su tutte--}}
+        {{-- <h3>Categoria:{{$post->category->name}}</h3>     --}}
+        {{-- creo un ternario per risolvere il problema descritto sopra e per dare all'utenza un buona fruibilità --}}
+        <h3>Categoria: {{$post->category ? $post->category->name : 'nessuna categoria'}}</h3>
         <p>{{$post->content}}</p>
 
         <a href="{{route('admin.posts.edit',['post' =>$post->id])}}" class="btn btn-primary">modifica post</a>

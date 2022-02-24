@@ -93,6 +93,11 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         // test
         // dd($post);
+
+        // testo la categoria sul post
+        // dd($post->category);
+        // $category = $post->category;
+
         $data = [
             'post' => $post
         ];
