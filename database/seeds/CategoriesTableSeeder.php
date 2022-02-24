@@ -11,6 +11,14 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // in questo seeder al posto di utilizzare faker facciamo un array
+        $categories = [
+            
+            'attualità',
+            'gossip',
+            'medicina',
+            'scienza',
+            'tecnologia'
+        ];
     }
 }
