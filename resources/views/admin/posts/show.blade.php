@@ -9,7 +9,14 @@
         <p>{{$post->content}}</p>
 
         <a href="{{route('admin.posts.edit',['post' =>$post->id])}}" class="btn btn-primary">modifica post</a>
-        <a href=""class="btn btn-danger">elimina post</a>
+        {{-- creo il destroy deve avere un form --}}
+        {{-- controllare la tebella route --}}
+        <form action="{{route('admin.posts.destroy',['post' =>$post->id])}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger">elimina post</button>
+        </form>
+        
         </div>
     </section>
     
