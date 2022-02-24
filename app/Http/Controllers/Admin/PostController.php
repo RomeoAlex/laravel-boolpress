@@ -58,6 +58,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $form_data = $request->all();
+        // dd($form_data);
         // validazione per i campi vuoti
         // $request->validate([
         //     'title' => 'required|max:255',
@@ -175,7 +176,7 @@ class PostController extends Controller
         return [
             'title' => 'required|max:255',
             'content' => 'required|max:60000',
-            'category_id' => 'exists:category,id|nullable'
+            'category_id' => 'exists:categories,id|nullable'
         ];
     }
     protected function getUniqueSlug($title){

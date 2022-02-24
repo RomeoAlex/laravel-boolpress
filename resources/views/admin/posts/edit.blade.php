@@ -35,8 +35,8 @@
                 {{-- faccio un foreach per recuperare tutte le categorie --}}
                 {{-- imposrtante il ternario per old nella select --}}
             @foreach ($categories as $category)
-                
-                <option value="{{$category->id}}" {{old('category_id') == $category->id ? 'selected' : ''}} >{{$category->name }}</option>
+                {{-- importante old per il salvataggio del valore vado a confrontare il foreign key nella tabella perchè mi basta l'id!!!!! --}}
+                <option value="{{$category->id}}" {{ old('category_id', $post->category_id ) == $category->id ? 'selected' : ''}} >{{$category->name }}</option>
                 
             @endforeach    
                 
@@ -45,7 +45,7 @@
             <div class="form-floating">
                 
                 <label for="content" class="form-label">Contenuto</label>
-                <textarea class="form-control" id="content" name="content"  value="{{old('content' , $post->content)}}" ></textarea>
+                <textarea class="form-control" name="content" id="content"  >{{old('content' , $post->content)}}</textarea>
                 
               </div>
             <button type="submit" class="btn btn-primary">Submit</button>

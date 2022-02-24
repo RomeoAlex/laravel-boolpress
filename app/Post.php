@@ -12,7 +12,6 @@ class Post extends Model
         'content',
         'slug',
         'category_id'
-
     ];
     // funzione di relazione per la tabella
     public function category(){
