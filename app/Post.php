@@ -13,4 +13,8 @@ class Post extends Model
         'slug'
 
     ];
+    // funzione di relazione per la tabella
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
 }
