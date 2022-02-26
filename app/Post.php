@@ -19,7 +19,7 @@ class Post extends Model
         return $this->belongsTo('App\Category');
     }
     public function tags(){
-
-        return $this->belongsTo('App\Tag');
+        // IMPORTANTISSIMO LA FUNZIONE DEVE RIPORTARE MANY!!!!!!
+        return $this->belongsToMany('App\Tag');
     }
 }
