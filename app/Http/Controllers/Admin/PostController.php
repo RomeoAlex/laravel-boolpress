@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Post;
 // richiamo il model
 use App\Category;
+// richiamo il model per i Tags
+use App\Tag;
 // per slug bisogna importare la funzione di supporto
 use Illuminate\Support\Str;
 class PostController extends Controller

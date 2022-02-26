@@ -15,6 +15,11 @@ class Post extends Model
     ];
     // funzione di relazione per la tabella
     public function category(){
+        
         return $this->belongsTo('App\Category');
+    }
+    public function tags(){
+
+        return $this->belongsTo('App\Tag');
     }
 }
