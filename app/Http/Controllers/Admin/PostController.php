@@ -105,10 +105,17 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         // test
         // dd($post);
-
         // testo la categoria sul post
         // dd($post->category);
         // $category = $post->category;
+        
+        // TEST SULLA TABELLA PONTE
+        // TEST sull'inserminte manuale dei tags sul post nel database per verificarne il funzionamento
+        dd($post->tags);
+        // $tags_test = $post->tags;
+        // $tag = $tags_test[0];
+        // dd($tag);
+
 
         $data = [
             'post' => $post
