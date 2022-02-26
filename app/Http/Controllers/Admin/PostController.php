@@ -111,7 +111,7 @@ class PostController extends Controller
         
         // TEST SULLA TABELLA PONTE
         // TEST sull'inserminte manuale dei tags sul post nel database per verificarne il funzionamento
-        dd($post->tags);
+        // dd($post->tags);
         // $tags_test = $post->tags;
         // $tag = $tags_test[0];
         // dd($tag);

@@ -10,6 +10,17 @@
         {{-- <h3>Categoria:{{$post->category->name}}</h3>     --}}
         {{-- creo un ternario per risolvere il problema descritto sopra e per dare all'utenza un buona fruibilità --}}
         <h3>Categoria: {{$post->category ? $post->category->name : 'nessuna categoria'}}</h3>
+        {{-- Creo forelse per i tags! --}}
+        <div class=""><h2>Tags:
+            @forelse ($post->tags as $tag)
+                {{-- stampo il tag con una condizione loop per la , --}}
+                {{$tag->name}}{{ $loop->last ? '' : ', ' }}
+            @empty
+               Nessuna tag
+            @endforelse
+        </h2>
+        </div>
+        
         <p>{{$post->content}}</p>
 
         <a href="{{route('admin.posts.edit',['post' =>$post->id])}}" class="btn btn-primary">modifica post</a>
