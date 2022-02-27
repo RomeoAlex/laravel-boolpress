@@ -38,7 +38,9 @@
             <h3>Tags:</h3>
             @foreach ($tags as $tag)
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="tag-{{$tag->id}}">
+                {{-- IMPORTANTE per inviare i dati al database serve il NAME --}}
+                {{-- DEVO IMPOSTARE UN ARRAY PER AVERE I DATI DI UNA SELEZIONE MULTIPLA!!! --}}
+                <input class="form-check-input" name="tags[]" type="checkbox" value="" id="tag-{{$tag->id}}">
                 {{-- il for deve essere ugula al tag-id --}}
                 <label class="form-check-label" for="tag-{{$tag->id}}">
                   {{ $tag->name }}
