@@ -89,7 +89,12 @@ class PostController extends Controller
         //     $counter++;
         // }
         $new_post->slug = $this->getUniqueSlug($form_data['title']);
+
         $new_post->save();
+        // dd($form_data);
+        // vado a salvare le tags nella tabella ponte DOPO IL SAVE PERCHE' ABBIAMO I VALORI DELL'ID!!!
+        // utilizzo di sync o attach in store è equivalente
+        $new_post->tags()->sync($form_data['tags']);
         // ritorno alla pagina del post creato
         return  redirect()->route('admin.posts.show', ['post' => $new_post->id]);
     }
