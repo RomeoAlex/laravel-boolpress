@@ -16,7 +16,7 @@
                 {{-- stampo il tag con una condizione loop per la , --}}
                 {{$tag->name}}{{ $loop->last ? '' : ', ' }}
             @empty
-               Nessuna tag
+               Nessun
             @endforelse
         </h2>
         </div>
