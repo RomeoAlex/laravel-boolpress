@@ -36,10 +36,11 @@
               </select>
             </div>
             <h3>Tags:</h3>
-            @foreach ($tags $tag)
+            @foreach ($tags as $tag)
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="">
-                <label class="form-check-label" for="flexCheckDefault">
+                <input class="form-check-input" type="checkbox" value="" id="tag-{{$tag->id}}">
+                {{-- il for deve essere ugula al tag-id --}}
+                <label class="form-check-label" for="tag-{{$tag->id}}">
                   {{ $tag->name }}
                 </label>
               </div>
