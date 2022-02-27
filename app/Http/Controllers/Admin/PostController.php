@@ -43,9 +43,10 @@ class PostController extends Controller
     {
         // richiamo le categorie er inserirle nel create form
         $categories = Category::all();
-
+        $tags = Tag::all();
         $data = [
-            'categories' => $categories
+            'categories' => $categories,
+            'tags' =>$tags
         ];
         
         return view('admin.posts.create', $data);

@@ -33,9 +33,18 @@
                 <option value="{{$category->id}}" {{old('category_id') == $category->id ? 'selected' : ''}} >{{$category->name }}</option>
                 
             @endforeach    
-                
               </select>
-            </div>  
+            </div>
+            <h3>Tags:</h3>
+            @foreach ($tags $tag)
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="">
+                <label class="form-check-label" for="flexCheckDefault">
+                  {{ $tag->name }}
+                </label>
+              </div>
+            @endforeach
+            
             <div class="form-floating">
                 
                 <label for="content" class="form-label">Contenuto</label>
