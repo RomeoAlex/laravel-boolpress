@@ -41,7 +41,28 @@
             @endforeach    
                 
               </select>
-            </div> 
+            </div>
+            <h3>Tags:</h3>
+            @foreach ($tags as $tag)
+            <div class="form-check">
+                {{-- problema tra array e collection condizionale per risolvere l'esperienza utente --}}
+                
+                @if ($errors->any())
+                    <input {{ in_array($tag->id , old('tags' , [])) ? 'checked' : ''}} class="form-check-input" type="checkbox" name="tags[]"  value="{{$tag->id}}" id="tag-{{$tag->id}}">
+                @else
+                
+                {{-- cambiamo la funzione per l'esperienza utente , abbiamo una collection e verifichiamo se il tag è all'interno importante fare un dd per verificare la collection--}}
+                    <input {{ $post->tags->contains($tags) ? 'checked' : '' }} class="form-check-input" type="checkbox" name="tags[]" value="{{$tag->id}}" id="tag-{{$tag->id}}">
+                @endif
+                
+                
+                
+                {{-- il for deve essere uguale al tag-id --}}
+                    <label class="form-check-label" for="tag-{{$tag->id}}">
+                    {{ $tag->name }}
+                    </label>
+            </div>
+            @endforeach 
             <div class="form-floating">
                 
                 <label for="content" class="form-label">Contenuto</label>

@@ -96,7 +96,7 @@ class PostController extends Controller
         // utilizzo di sync o attach in store è equivalente
         // creo condizionale se non vengono spuntati i tags nella create
         if (isset($form_data['tags'])) {
-            # code...
+            
             $new_post->tags()->sync($form_data['tags']);
         }
         // ritorno alla pagina del post creato
@@ -147,11 +147,13 @@ class PostController extends Controller
         // test
         // dd($post);
         $categories = Category::all();
-
+        // richiamo tags per averli in pagina di modifica
+        $tags = Tag::all();
         
         $data = [
             'post' => $post,
-            'categories' => $categories
+            'categories' => $categories,
+            'tags' =>$tags
         ];
 
         return view('admin.posts.edit', $data);
@@ -175,6 +177,13 @@ class PostController extends Controller
         }
         $post->update($form_data);
 
+        // aggiungo funzione di sync poer i tags SEMPRE DOPO UPDATE PERCHE' TABELLA PONTE
+        if (isset($form_data['tags'])) {
+        $post->tags()->sync($form_data['tags']);
+        }else{
+            // nel caso l'utente toglie tutte le checkbox devo salvare un array vuoto
+            $post->tags()->sync([]);
+        }
         return redirect()->route('admin.posts.show', ['post' => $post->id]);
     }
 
@@ -187,6 +196,8 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
+        // non utilizzo cascade
+        $post->tags()->sync([]);
         $post->delete();
         return redirect()->route('admin.posts.index');
     }

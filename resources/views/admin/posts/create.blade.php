@@ -42,7 +42,7 @@
                 {{-- DEVO IMPOSTARE UN ARRAY PER AVERE I DATI DI UNA SELEZIONE MULTIPLA!!! --}}
                 {{-- IMPOSTARE LA VALUE!!! --}}
                 <input {{ in_array($tag->id, old('tags' , []) ) ? 'checked' : ''}} class="form-check-input" name="tags[]" type="checkbox" value="{{$tag->id}}" id="tag-{{$tag->id}}">
-                {{-- il for deve essere ugula al tag-id --}}
+                {{-- il for deve essere uguale al tag-id --}}
                 <label class="form-check-label" for="tag-{{$tag->id}}">
                   {{ $tag->name }}
                 </label>
