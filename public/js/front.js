@@ -1920,11 +1920,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Posts',
   data: function data() {
     return {
-      posts: []
+      myposts: []
     };
   },
   methods: {
@@ -1936,7 +1947,7 @@ __webpack_require__.r(__webpack_exports__);
       // http://127.0.0.1:8000/api/posts di solito hanno la stessa url
       axios.get('/api/posts').then(function (response) {
         // console.log(response);
-        _this.posts = response.data.results;
+        _this.myposts = response.data.results;
       });
     }
   },
@@ -2456,20 +2467,38 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", [
+  return _c("section", [
+    _c("div", { staticClass: "container" }, [
       _c("h1", [_vm._v("\n        Lista dei post\n    ")]),
       _vm._v(" "),
-      _c("div", { staticClass: "container" }),
-    ])
-  },
-]
+      _c(
+        "div",
+        { staticClass: "row row-cols-3" },
+        _vm._l(_vm.myposts, function (mypost) {
+          return _c("div", { key: mypost.id, staticClass: "col" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("h5", { staticClass: "card-title" }, [
+                _vm._v(_vm._s(mypost.title)),
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "card-text" }, [
+                _vm._v(_vm._s(mypost.content)),
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                { staticClass: "btn btn-primary", attrs: { href: "#" } },
+                [_vm._v("Go somewhere")]
+              ),
+            ]),
+          ])
+        }),
+        0
+      ),
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -14760,10 +14789,10 @@ __webpack_require__.r(__webpack_exports__);
 // conterrà il caricamento di VUE
 // test
 // alert('test');
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); // importante per utilizzare axios in vue"!!!!
-
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'; // importante per utilizzare axios in vue"!!!!
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

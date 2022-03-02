@@ -1,10 +1,21 @@
 <template>
     <section>
-        <h1>
+        
+        <div class="container">
+            <h1>
             Lista dei post
         </h1>
-        <div class="container">
-
+                <div class="row row-cols-3">
+                    <!-- stampo i dati presi dalla api -->
+                    <div  class="col" v-for="mypost in myposts" :key="mypost.id">
+                                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                                <div class="card-body">
+                                    <h5 class="card-title">{{mypost.title}}</h5>
+                                        <p class="card-text">{{mypost.content}}</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                    </div>
+                </div>
         </div>
     </section>
 </template>
@@ -15,7 +26,7 @@ export default {
         name: 'Posts',
         data:function(){
             return{
-                posts:[]
+                myposts:[]
             };
         },
         methods:{
@@ -26,7 +37,7 @@ export default {
                 axios.get('/api/posts')
                 .then((response) => {
                     // console.log(response);
-                    this.posts = response.data.results;
+                    this.myposts = response.data.results;
                 });
             }
         },
