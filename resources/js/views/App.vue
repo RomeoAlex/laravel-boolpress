@@ -6,7 +6,7 @@
 
 <script>
 
-import WorkingInProgress from '../components/Posts.vue';
+import Posts from '../components/Posts.vue';
 export default {
 
     name: 'App',
