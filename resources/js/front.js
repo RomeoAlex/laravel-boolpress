@@ -4,7 +4,9 @@
 // alert('test');
 
 window.Vue = require('vue');
-
+// importante per utilizzare axios in vue"!!!!
+window.axios = require('axios');
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
