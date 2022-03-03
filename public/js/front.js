@@ -1934,10 +1934,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 // import Vue from 'vue'
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Header'
+  name: 'Header',
+  data: function data() {
+    return {
+      menuLinks: [{
+        name: 'home',
+        label: 'Home'
+      }, {
+        name: 'about',
+        label: 'About'
+      }]
+    };
+  }
 });
 
 /***/ }),
@@ -2521,37 +2531,28 @@ var render = function () {
             attrs: { id: "navbarNav" },
           },
           [
-            _c("ul", { staticClass: "navbar-nav" }, [
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    { staticClass: "nav-link active", attrs: { to: "/" } },
-                    [_vm._v("Home")]
-                  ),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "nav-item" },
-                [
-                  _c(
-                    "router-link",
-                    { staticClass: "nav-link active", attrs: { to: "/about" } },
-                    [_vm._v("About")]
-                  ),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
-              _vm._m(2),
-            ]),
+            _c(
+              "ul",
+              { staticClass: "navbar-nav" },
+              _vm._l(_vm.menuLinks, function (link, index) {
+                return _c(
+                  "li",
+                  { key: index, staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link active",
+                        attrs: { to: { name: link.name } },
+                      },
+                      [_vm._v(_vm._s(link.label))]
+                    ),
+                  ],
+                  1
+                )
+              }),
+              0
+            ),
           ]
         ),
       ]),
@@ -2578,24 +2579,6 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-        _vm._v("Pricing"),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link disabled" }, [_vm._v("Disabled")]),
-    ])
   },
 ]
 render._withStripped = true

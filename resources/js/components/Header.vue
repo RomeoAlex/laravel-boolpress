@@ -7,17 +7,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <router-link class="nav-link active" to="/">Home</router-link> 
+                    <!-- <li class="nav-item">
+                        <router-link class="nav-link active" to="/">Home</router-link>  -->
+                        <!-- secondo modalità chiamo direttamente la rotta che nella url faà comparire la parola lì descrittta
+                        <router-link class="nav-link active" :to="{name: 'home'}">Home</router-link> 
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link active" to="/about">About</router-link> 
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
+                        <router-link class="nav-link active" :to="{name: 'about'}">About</router-link> 
+                    </li> -->
+                   <li v-for="(link,index) in menuLinks" :key="index" class="nav-item">
+                        <router-link class="nav-link active" :to="{name: link.name }">{{link.label}}</router-link> 
                     </li>
                 </ul>
             </div>
@@ -28,6 +27,20 @@
 <script >
 // import Vue from 'vue'
 export default{
- name : 'Header',   
+ name : 'Header',  
+ data: function() {
+     return{
+         menuLinks: [
+             {
+                 name: 'home',
+                 label: 'Home',
+             },
+             {
+                 name: 'about',
+                 label: 'About',
+             }
+         ]
+     }
+ } 
 }
 </script>
