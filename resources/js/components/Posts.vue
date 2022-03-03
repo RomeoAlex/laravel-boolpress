@@ -4,20 +4,14 @@
         <div class="container">
             <h1>
             Lista dei post
-        </h1>
+            </h1>
                 <div class="row row-cols-3">
                     <!-- stampo i dati presi dalla api -->
-                    <div  class="col" v-for="mypost in myposts" :key="mypost.id">
-                                <!-- <img src="..." class="card-img-top" alt="..."> -->
-                                <div class="card-body">
-                                    <h5 class="card-title">{{mypost.title}}</h5>
-                                        <p class="card-text">{{reduceText(mypost.content , 40)}}</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
+                    <div v-for="mypost in myposts" :key="mypost.id" class="col" >
+                                <PostCard :postDetails="mypost" />
                     </div>
                 </div>
-        </div>
-      <!-- PAGINAZIONE -->
+                <!-- PAGINAZIONE -->
                 <!-- <nav aria-label="...">
                     <ul class="pagination">
                         <li class="page-item disabled">
@@ -34,17 +28,23 @@
                         </li>
                         <li class="page-item">
                             <a @click="getPosts(currentPage + 1)" class="page-link" href="">Next</a>
-                            <!-- @click="mypost.next_page_url" -->
+                             @click="mypost.next_page_url" 
                         </li>
                     </ul>
                 </nav> -->
+        </div>
+      
     </section>
 </template>
 
 
 <script>
+import PostCard from './PostCard.vue';
 export default {
         name: 'Posts',
+        components: {
+            PostCard,
+        },
         data:function(){
             return{
                 myposts:[],
