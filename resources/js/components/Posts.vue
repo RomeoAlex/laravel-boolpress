@@ -17,6 +17,26 @@
                     </div>
                 </div>
         </div>
+      <!-- PAGINAZIONE -->
+                <nav aria-label="...">
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link">Previous</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
     </section>
 </template>
 
@@ -30,14 +50,29 @@ export default {
             };
         },
         methods:{
-            // chiamata api per attingere i dati dal json
-            getPosts: function() {
+            // // chiamata api per attingere i dati dal json
+            // getPosts: function() {
+            //     // console.log('funzione per chiamare api');
+            //     // http://127.0.0.1:8000/api/posts di solito hanno la stessa url
+            //     axios.get('/api/posts')
+            //     .then((response) => {
+            //         // console.log(response);
+            //         this.myposts = response.data.results;
+            //     });
+            // },
+            // MODIFICANDO PAGINATE NEL CONTROLLER DEVO CAMBIARE LA FUNZIONE PERCHE' HO UN RITORNO DI DATI DIVERSO
+            getPosts: function(pageNumber) {
                 // console.log('funzione per chiamare api');
                 // http://127.0.0.1:8000/api/posts di solito hanno la stessa url
-                axios.get('/api/posts')
+                axios.get('/api/posts',{
+                    params:{
+                        page: pageNumber
+                    }
+                })
                 .then((response) => {
                     // console.log(response);
-                    this.myposts = response.data.results;
+                    // modifico il response perchè ho usato paginate nel controller
+                    this.myposts = response.data.results.data;
                 });
             },
             reduceText: function(text, maxCharsNumber){
@@ -48,7 +83,8 @@ export default {
             }
         },
         created: function(){
-            this.getPosts();
+            // quando carico la pagina voglio vedere la prima
+            this.getPosts(1);
         }            
     }
 </script>
