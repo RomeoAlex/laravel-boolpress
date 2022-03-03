@@ -18,10 +18,10 @@
                 </div>
         </div>
       <!-- PAGINAZIONE -->
-                <nav aria-label="...">
+                <!-- <nav aria-label="...">
                     <ul class="pagination">
                         <li class="page-item disabled">
-                            <a class="page-link">Previous</a>
+                            <a @click="getPosts(currentPage -1)" class="page-link">Previous</a>
                         </li>
                         <li class="page-item">
                             <a class="page-link" href="#">1</a>
@@ -33,10 +33,11 @@
                             <a class="page-link" href="#">3</a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
+                            <a @click="getPosts(currentPage + 1)" class="page-link" href="">Next</a>
+                            <!-- @click="mypost.next_page_url" -->
                         </li>
                     </ul>
-                </nav>
+                </nav> -->
     </section>
 </template>
 
@@ -46,7 +47,9 @@ export default {
         name: 'Posts',
         data:function(){
             return{
-                myposts:[]
+                myposts:[],
+                currentPage: 0
+                // salvo currentpage dalla api fornita dal json
             };
         },
         methods:{
@@ -73,6 +76,8 @@ export default {
                     // console.log(response);
                     // modifico il response perchè ho usato paginate nel controller
                     this.myposts = response.data.results.data;
+                    // aggiungo currentPage per poi riutilizzarlo nel html
+                    this.currentPage = response.data.results.current_page;
                 });
             },
             reduceText: function(text, maxCharsNumber){

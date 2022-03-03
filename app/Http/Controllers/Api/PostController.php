@@ -19,7 +19,7 @@ class PostController extends Controller
     
     
     // prendo solo 8 post per pagina utilizzando paginate , 
-    $posts = Post::paginate(8);
+    $posts = Post::paginate(9);
     // verifico le informazioni di paginate con un dd
     // dd($posts);
     // 2 tipologie differenti di return 

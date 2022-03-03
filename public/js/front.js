@@ -1951,11 +1951,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Posts',
   data: function data() {
     return {
-      myposts: []
+      myposts: [],
+      currentPage: 0 // salvo currentpage dalla api fornita dal json
+
     };
   },
   methods: {
@@ -1982,7 +1985,9 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         // console.log(response);
         // modifico il response perchè ho usato paginate nel controller
-        _this.myposts = response.data.results.data;
+        _this.myposts = response.data.results.data; // aggiungo currentPage per poi riutilizzarlo nel html
+
+        _this.currentPage = response.data.results.current_page;
       });
     },
     reduceText: function reduceText(text, maxCharsNumber) {
@@ -2540,54 +2545,10 @@ var render = function () {
       ),
     ]),
     _vm._v(" "),
-    _vm._m(0),
+    _vm._v(" -->\n"),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("nav", { attrs: { "aria-label": "..." } }, [
-      _c("ul", { staticClass: "pagination" }, [
-        _c("li", { staticClass: "page-item disabled" }, [
-          _c("a", { staticClass: "page-link" }, [_vm._v("Previous")]),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "page-item" }, [
-          _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-            _vm._v("1"),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c(
-          "li",
-          {
-            staticClass: "page-item active",
-            attrs: { "aria-current": "page" },
-          },
-          [
-            _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-              _vm._v("2"),
-            ]),
-          ]
-        ),
-        _vm._v(" "),
-        _c("li", { staticClass: "page-item" }, [
-          _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-            _vm._v("3"),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "page-item" }, [
-          _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
-            _vm._v("Next"),
-          ]),
-        ]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
