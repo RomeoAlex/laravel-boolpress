@@ -14,11 +14,12 @@
                 <!-- PAGINAZIONE -->
                 <nav >
                     <ul class="pagination">
-                        <li class="page-item" :class="{ 'disabled': currentPage = 1 }">
+                        <!-- ATTENZIONI ALLE UGUAGLIANZE TERNARIE!!!!!! -->
+                        <li class="page-item" :class="{ 'disabled': currentPage == 1 }">
                             <a @click="getPosts(currentPage -1)" class="page-link">Previous</a>
                         </li>
-                        <li v-for="n in lastPage" :key="n" class="page-item" :class="{ 'active': currentPage = n }" >
-                            <a @click="n" class="page-link" >{{ n }}</a>
+                        <li v-for="n in lastPage" :key="n" class="page-item" :class="{ 'active': currentPage == n }" >
+                            <a @click="getPosts(n)" class="page-link" >{{ n }}</a>
                         </li>
                         
                         <li class="page-item" :class="{'disabled': currentPage == lastPage }">

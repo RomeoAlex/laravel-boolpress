@@ -1974,6 +1974,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Posts',
@@ -2608,7 +2609,7 @@ var render = function () {
               "li",
               {
                 staticClass: "page-item",
-                class: { disabled: (_vm.currentPage = 1) },
+                class: { disabled: _vm.currentPage == 1 },
               },
               [
                 _c(
@@ -2632,12 +2633,21 @@ var render = function () {
                 {
                   key: n,
                   staticClass: "page-item",
-                  class: { active: (_vm.currentPage = n) },
+                  class: { active: _vm.currentPage == n },
                 },
                 [
-                  _c("a", { staticClass: "page-link", on: { click: n } }, [
-                    _vm._v(_vm._s(n)),
-                  ]),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      on: {
+                        click: function ($event) {
+                          return _vm.getPosts(n)
+                        },
+                      },
+                    },
+                    [_vm._v(_vm._s(n))]
+                  ),
                 ]
               )
             }),
