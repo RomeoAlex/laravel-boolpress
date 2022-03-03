@@ -1949,6 +1949,13 @@ __webpack_require__.r(__webpack_exports__);
         // console.log(response);
         _this.myposts = response.data.results;
       });
+    },
+    reduceText: function reduceText(text, maxCharsNumber) {
+      if (text.length > maxCharsNumber) {
+        return text.substr(0, maxCharsNumber), '...';
+      }
+
+      return text;
     }
   },
   created: function created() {
@@ -2482,7 +2489,7 @@ var render = function () {
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "card-text" }, [
-                _vm._v(_vm._s(mypost.content)),
+                _vm._v(_vm._s(_vm.reduceText(mypost.content, 40))),
               ]),
               _vm._v(" "),
               _c(

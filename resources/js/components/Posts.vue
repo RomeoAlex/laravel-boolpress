@@ -11,7 +11,7 @@
                                 <!-- <img src="..." class="card-img-top" alt="..."> -->
                                 <div class="card-body">
                                     <h5 class="card-title">{{mypost.title}}</h5>
-                                        <p class="card-text">{{mypost.content}}</p>
+                                        <p class="card-text">{{reduceText(mypost.content , 40)}}</p>
                                     <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
                     </div>
@@ -39,6 +39,12 @@ export default {
                     // console.log(response);
                     this.myposts = response.data.results;
                 });
+            },
+            reduceText: function(text, maxCharsNumber){
+                if(text.length > maxCharsNumber){
+                   return text.substr(0 , maxCharsNumber) , '...';
+                }
+                return text;
             }
         },
         created: function(){
