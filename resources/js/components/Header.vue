@@ -38,6 +38,10 @@ export default{
              {
                  name: 'about',
                  label: 'About',
+             },
+             {
+                 name: 'blog',
+                 label: 'Blog',
              }
          ]
      }
