@@ -1974,10 +1974,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Posts',
@@ -1987,8 +1983,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       myposts: [],
-      currentPage: 0 // salvo currentpage dalla api fornita dal json
-
+      currentPage: 1,
+      lastPage: 0
     };
   },
   methods: {
@@ -2017,7 +2013,9 @@ __webpack_require__.r(__webpack_exports__);
         // modifico il response perchè ho usato paginate nel controller
         _this.myposts = response.data.results.data; // aggiungo currentPage per poi riutilizzarlo nel html
 
-        _this.currentPage = response.data.results.current_page;
+        _this.currentPage = response.data.results.current_page; // aggiungo last page dal response ATTENZIONE POSSO FARLO CON TUTTI GLI ELEMENTI DELL'OGGETTO JSON E UTILIZZARLI SUCCESSIVAMENTE POPOLANDO I DATA IN VUE
+
+        _this.lastPage = response.data.results.last_page;
       });
     },
     reduceText: function reduceText(text, maxCharsNumber) {
@@ -2600,6 +2598,75 @@ var render = function () {
         }),
         0
       ),
+      _vm._v(" "),
+      _c("nav", [
+        _c(
+          "ul",
+          { staticClass: "pagination" },
+          [
+            _c(
+              "li",
+              {
+                staticClass: "page-item",
+                class: { disabled: (_vm.currentPage = 1) },
+              },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "page-link",
+                    on: {
+                      click: function ($event) {
+                        return _vm.getPosts(_vm.currentPage - 1)
+                      },
+                    },
+                  },
+                  [_vm._v("Previous")]
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.lastPage, function (n) {
+              return _c(
+                "li",
+                {
+                  key: n,
+                  staticClass: "page-item",
+                  class: { active: (_vm.currentPage = n) },
+                },
+                [
+                  _c("a", { staticClass: "page-link", on: { click: n } }, [
+                    _vm._v(_vm._s(n)),
+                  ]),
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "page-item",
+                class: { disabled: _vm.currentPage == _vm.lastPage },
+              },
+              [
+                _c(
+                  "a",
+                  {
+                    staticClass: "page-link",
+                    on: {
+                      click: function ($event) {
+                        return _vm.getPosts(_vm.currentPage + 1)
+                      },
+                    },
+                  },
+                  [_vm._v("Next")]
+                ),
+              ]
+            ),
+          ],
+          2
+        ),
+      ]),
     ]),
   ])
 }

@@ -12,26 +12,22 @@
                     </div>
                 </div>
                 <!-- PAGINAZIONE -->
-                <!-- <nav aria-label="...">
+                <nav >
                     <ul class="pagination">
-                        <li class="page-item disabled">
+                        <li class="page-item" :class="{ 'disabled': currentPage = 1 }">
                             <a @click="getPosts(currentPage -1)" class="page-link">Previous</a>
                         </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
+                        <li v-for="n in lastPage" :key="n" class="page-item" :class="{ 'active': currentPage = n }" >
+                            <a @click="n" class="page-link" >{{ n }}</a>
                         </li>
-                        <li class="page-item active" aria-current="page">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a @click="getPosts(currentPage + 1)" class="page-link" href="">Next</a>
-                             @click="mypost.next_page_url" 
+                        
+                        <li class="page-item" :class="{'disabled': currentPage == lastPage }">
+                            <!-- l'ancora non deve contenere href="" sennò ricarica la pagina dopo il click-->
+                            <a @click="getPosts(currentPage + 1)" class="page-link">Next</a>
+                             <!-- @click="mypost.next_page_url"  -->
                         </li>
                     </ul>
-                </nav> -->
+                </nav>
         </div>
       
     </section>
@@ -43,13 +39,13 @@ import PostCard from './PostCard.vue';
 export default {
         name: 'Posts',
         components: {
-            PostCard,
+            PostCard
         },
-        data:function(){
-            return{
-                myposts:[],
-                currentPage: 0
-                // salvo currentpage dalla api fornita dal json
+        data: function() {
+            return {
+                myposts: [],
+                currentPage: 1,
+                lastPage: 0
             };
         },
         methods:{
@@ -67,7 +63,7 @@ export default {
             getPosts: function(pageNumber) {
                 // console.log('funzione per chiamare api');
                 // http://127.0.0.1:8000/api/posts di solito hanno la stessa url
-                axios.get('/api/posts',{
+                axios.get('/api/posts', {
                     params:{
                         page: pageNumber
                     }
@@ -78,6 +74,8 @@ export default {
                     this.myposts = response.data.results.data;
                     // aggiungo currentPage per poi riutilizzarlo nel html
                     this.currentPage = response.data.results.current_page;
+                    // aggiungo last page dal response ATTENZIONE POSSO FARLO CON TUTTI GLI ELEMENTI DELL'OGGETTO JSON E UTILIZZARLI SUCCESSIVAMENTE POPOLANDO I DATA IN VUE
+                    this.lastPage = response.data.results.last_page;
                 });
             },
             reduceText: function(text, maxCharsNumber){
