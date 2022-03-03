@@ -1,8 +1,9 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
-import Home from
+import Home from './pages/Home.vue';
+import About from './pages/About.vue';
 
 const router = new VueRouter({
     mode: "history",
@@ -12,8 +13,13 @@ const router = new VueRouter({
             path: "/",
             name: "home",
             component: Home
+        },
+        {
+            path: "/about",
+            name: "about",
+            component: About
         }
     ]
 });
 // non si trova nella documentazione
-export default router
+export default router;

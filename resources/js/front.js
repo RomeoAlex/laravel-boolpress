@@ -30,10 +30,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 // importo App.vue
 import App from './views/App.vue';
+// importante per usare Vue router
+import router from './router.js';
 
 // cambio la variabile in root creata in front.js
 const app = new Vue({
     el: '#root',
     // codice necessario per il funzionamento e l'importazione di App
-    render: h => h(App)
+    render: h => h(App),
+    router
 });
