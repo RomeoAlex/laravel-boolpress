@@ -28,7 +28,7 @@ const router = new VueRouter({
             component: Blog
         },
         {
-            path: "/ultimenotizie",
+            path: "/ultime-notizie",
             name: "ultimenotizie",
             component: UltimeNotizie
         },

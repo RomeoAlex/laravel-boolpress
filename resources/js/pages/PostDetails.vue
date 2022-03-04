@@ -2,10 +2,10 @@
     <section>
         <div class="container">
             <h1>
-                {{singlepost.title}}
+                <!-- {{singlepost.title}} -->
             </h1>
             <p>
-                {{singlepost.content}}
+                <!-- {{singlepost.content}} -->
             </p>
             
         </div>
@@ -22,6 +22,7 @@ export default {
     components: { 
         
     },
+    
     data: function(){
         return{
             singlepost: false
@@ -31,15 +32,22 @@ export default {
         getPost(){
             // faccio un controllo con uno slug fisso
             // asios.get('api/posts/guerra')
-            // ,then((response) =>{
+            // .then((response) =>{
             //     console.log(response);
             // });
             // DATO LO SLUG RICEVO I DATI DELLO STESSO CON LA CHIAMATA API
-            asios.get('api/posts/' + this.$route.params.slug)
-            ,then((response) =>{
-                // salvo i dati nei data chiamato
-                this.singlepost = response.data.results;
-
+            axios.get('api/posts/' + this.$route.params.slug)
+            .then((response) =>{
+                // creo condizionale per un url di post non esistente
+                // if(response.data.success){
+                //     // salvo i dati nei data chiamato
+                // this.singlepost = response.data;
+                console.log(response);
+                // }else{
+                //     // dirottiamo l'utenza sulla pagina 404 da noi creata
+                //     this.$router.push({ name:'not-found'});
+                // }
+                
             });
         }
     },

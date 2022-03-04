@@ -44,7 +44,7 @@ export default{
                  label: 'Blog',
              },
              {
-                 name: 'Ultime Notizie',
+                 name: 'ultimenotizie',
                  label: 'UltimeNotizie',
              }
          ]

@@ -5,7 +5,7 @@
                                         <h5 class="card-title">{{postDetails.title}}</h5>
                                         <!-- devo uisare substr perchè in altro caso devo richiamare la funzione reducetext o scriverla in questa pagina -->
                                             <p class="card-text">{{postDetails.content.substr(0,40) }}</p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                         <router-link :to="{name: 'post-details', params:{ slug: postDetails.slug } }">Leggi l'articolo</router-link> 
                                     </div>
                                 </div>
 </template>
