@@ -10,12 +10,12 @@
 
 <script>
 import Header from '../components/Header.vue';
-
+import NotFound from '../pages/NotFound.vue';
 export default {
 
     name: 'App',
     components:{
-        Header
+        Header , NotFound ,
     }
     
 

@@ -42,6 +42,10 @@ export default{
              {
                  name: 'blog',
                  label: 'Blog',
+             },
+             {
+                 name: 'Ultime Notizie',
+                 label: 'UltimeNotizie',
              }
          ]
      }

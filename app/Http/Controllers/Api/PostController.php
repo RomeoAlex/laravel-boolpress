@@ -33,4 +33,29 @@ class PostController extends Controller
     //     'results' => $posts
     // ];
    }
+//    per creare lo show dei post per il pubblico vado in api.php a creare la rotta
+public function show($slug) {
+    // test per vedere lo slug
+    // dd($slug);
+    $post = Post::where('slug', '=', $slug)->first();
+    // risposta a json per vue questa soluzione è insufficiente se l'end url non è corretto e punta un elemento che non esiste nel database
+    // return response()->json([
+    //     'success' => true,
+    //     'results' => $post
+    // ]);
+    // creo un condizionale
+    if($post) {
+            return response()->json([
+        'success' => true,
+        'results' => $post
+    ]);
+    }else {
+        // nel caso non esista rimandiamo un array vuoto
+        return response()->json([
+            'success' => false,
+            // potremmo anche non mettere l'array
+            'results' => []
+        ]);
+    }
+}
 }

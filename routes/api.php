@@ -21,3 +21,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // rotta per i post 
 Route::get('/posts', 'Api\PostController@index');
+// controllare successivamente le rotte su route:list
+Route::get('/posts/{slug}', 'Api\PostController@show');
