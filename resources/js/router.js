@@ -2,17 +2,18 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
+
 import Home from './pages/Home.vue';
 import About from './pages/About.vue';
 import Blog from './pages/Blog.vue';
 import UltimeNotizie from './pages/UltimeNotizie.vue';
-import PostDetails from './pages/PostDetails.vue';
+import SinglePost from './pages/SinglePost.vue';
 import NotFound from './pages/NotFound.vue';
+
 const router = new VueRouter({
     mode: "history",
     routes: [
         {
-            // esempio di rotta
             path: "/",
             name: "home",
             component: Home
@@ -33,10 +34,10 @@ const router = new VueRouter({
             component: UltimeNotizie
         },
         {
-            // si utilizzano i :
+            
             path: "/blog/:slug",
-            name: "post-details",
-            component: PostDetails
+            name: "single-post",
+            component: SinglePost
         },
         {
             path: "/*",

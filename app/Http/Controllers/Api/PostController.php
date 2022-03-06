@@ -53,8 +53,8 @@ public function show($slug) {
         // nel caso non esista rimandiamo un array vuoto
         return response()->json([
             'success' => false,
-            // potremmo anche non mettere l'array
             'results' => []
+            // potremmo anche non mettere l'array
         ]);
     }
 }
