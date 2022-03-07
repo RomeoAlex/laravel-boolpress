@@ -2232,7 +2232,8 @@ __webpack_require__.r(__webpack_exports__);
   name: 'SinglePost',
   methods: {
     getSinglePost: function getSinglePost() {
-      axios.get('api/posts/' + this.$route.params.slug).then(function (response) {
+      //  correzione da rivedere immettendo l'url completo ho finalmente i data corretti
+      axios.get('http://127.0.0.1:8000/api/posts/' + this.$route.params.slug).then(function (response) {
         console.log(response);
       });
     }
