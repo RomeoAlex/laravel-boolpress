@@ -2228,6 +2228,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SinglePost',
   data: function data() {
@@ -2240,8 +2244,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       //  correzione da rivedere immettendo l'url completo ho finalmente i data corretti
-      axios.get('http://127.0.0.1:8000/api/posts/' + this.$route.params.slug).then(function (response) {
-        _this.singlepost = response.data.results; // console.log(response);
+      // ATTENZIONE ALLA GESTIONE ROTTE DA PARTE DI LARAVEL USARE URL COMPLETA NEL CASO
+      axios.get('/api/posts/' + this.$route.params.slug).then(function (response) {
+        // console.log(response);
+        _this.singlepost = response.data.results;
       });
     }
   },
@@ -3208,11 +3214,15 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("section", [
     _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("Titolo del post")]),
-      _vm._v(" "),
       _c("h1", [
         _vm._v("\n            " + _vm._s(_vm.singlepost.title) + "\n        "),
       ]),
+      _vm._v(" "),
+      _vm.singlepost.category
+        ? _c("h2", [
+            _vm._v("Categoria: " + _vm._s(_vm.singlepost.category.name)),
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _c("p", [
         _vm._v(

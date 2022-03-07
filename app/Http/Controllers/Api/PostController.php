@@ -37,7 +37,8 @@ class PostController extends Controller
 public function show($slug) {
     // test per vedere lo slug
     // dd($slug);
-    $post = Post::where('slug', '=', $slug)->first();
+    $post = Post::where('slug', '=', $slug)->with(['category', 'tags'])->first();
+    // con with vado a selezionare gli attributi category e tags di post !!! CONTROLLARE LA CHIAMATA API CON POSTMAN
     // risposta a json per vue questa soluzione è insufficiente se l'end url non è corretto e punta un elemento che non esiste nel database
     // return response()->json([
     //     'success' => true,
@@ -47,6 +48,12 @@ public function show($slug) {
     if($post) {
             return response()->json([
         'success' => true,
+        // modifico results per recuperare i dati delle tags e delle categorie ma posso inserire gli elementi direttamente quando chiamo il model
+        // 'results' => [
+        //    'post' => $post,
+        //    'tags' => $post->tags,
+        //    'category' => $post->category
+        // ]
         'results' => $post
     ]);
     }else {
