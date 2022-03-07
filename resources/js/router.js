@@ -8,6 +8,7 @@ import About from './pages/About.vue';
 import Blog from './pages/Blog.vue';
 import UltimeNotizie from './pages/UltimeNotizie.vue';
 import SinglePost from './pages/SinglePost.vue';
+import TagDetails from './pages/TagDetails.vue';
 import NotFound from './pages/NotFound.vue';
 
 const router = new VueRouter({
@@ -38,6 +39,12 @@ const router = new VueRouter({
             path: "/blog/:slug",
             name: "single-post",
             component: SinglePost
+        },
+        {
+            
+            path: "/tag/:slug",
+            name: "tag-details",
+            component: TagDetails
         },
         {
             path: "/*",

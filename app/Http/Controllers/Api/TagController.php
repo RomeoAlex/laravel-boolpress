@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// devo richiamare post model per sulg?! NO HO IL MODEL TAG
+// devo richiamare post model per slug?! NO HO IL MODEL TAG
 use App\Tag;
 class TagController extends Controller
 {
@@ -14,6 +14,7 @@ class TagController extends Controller
         // dd($slug);
         // USO WITH PER AGGIUNGERE RELAZIONI ALLA API
         $tag = Tag::where('slug', '=', $slug)->with(['posts'])->first();
+        
         if($tag){
             return response()->json([
                 // ATTENZIONE ALLA SINTASSI!!!
