@@ -21,7 +21,8 @@ export default {
     methods: {
 
          getSinglePost(){
-            axios.get('api/posts/' + this.$route.params.slug)
+            //  correzione da rivedere immettendo l'url completo ho finalmente i data corretti
+            axios.get('http://127.0.0.1:8000/api/posts/' + this.$route.params.slug)
             .then((response) => {
                 console.log(response);
             });
