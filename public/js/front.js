@@ -2230,11 +2230,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SinglePost',
+  data: function data() {
+    return {
+      singlepost: false
+    };
+  },
   methods: {
     getSinglePost: function getSinglePost() {
+      var _this = this;
+
       //  correzione da rivedere immettendo l'url completo ho finalmente i data corretti
       axios.get('http://127.0.0.1:8000/api/posts/' + this.$route.params.slug).then(function (response) {
-        console.log(response);
+        _this.singlepost = response.data.results; // console.log(response);
       });
     }
   },
@@ -3199,24 +3206,23 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", [
-      _c("div", { staticClass: "container" }, [
-        _c("h1", [_vm._v("Titolo del post")]),
-        _vm._v(" "),
-        _c("h1"),
-        _vm._v(" "),
-        _c("p"),
+  return _c("section", [
+    _c("div", { staticClass: "container" }, [
+      _c("h1", [_vm._v("Titolo del post")]),
+      _vm._v(" "),
+      _c("h1", [
+        _vm._v("\n            " + _vm._s(_vm.singlepost.title) + "\n        "),
       ]),
-    ])
-  },
-]
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n            " + _vm._s(_vm.singlepost.content) + "\n        "
+        ),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
