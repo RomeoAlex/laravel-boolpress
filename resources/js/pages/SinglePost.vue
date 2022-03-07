@@ -8,7 +8,11 @@
             <!-- creo condizionale per il nome della categoria nel caso sia null -->
             
             <h2 v-if="singlepost.category">Categoria: {{singlepost.category.name}}</h2>
-            <!-- <h2>tags: {{singlepost.category.name}}</h2> -->
+            <!-- condizionale per gli array vuoti -->
+            <div v-if="singlepost.tags.length > 0">
+            <span v-for="tag in singlepost.tags" :key="tag.id" class="badge bg-info text-dark mx-1">{{tag.name}}</span>
+
+            </div>
             <p>
                 {{singlepost.content}}
             </p>
