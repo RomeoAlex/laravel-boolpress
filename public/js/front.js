@@ -2286,6 +2286,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'TagDetails',
@@ -3333,25 +3338,30 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", [
-    _c(
-      "div",
-      { staticClass: "container" },
-      [
-        _c("h1", [_vm._v("\n            SONO LA TAGSSS PAGEE\n        ")]),
-        _vm._v(" "),
-        _c("h2", [_vm._v(_vm._s(_vm.tag.name))]),
-        _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c("h1", [_vm._v("\n            SONO LA TAGSSS PAGEE\n        ")]),
+      _vm._v(" "),
+      _c("h2", [_vm._v(_vm._s(_vm.tag.name))]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "list-group" },
         _vm._l(_vm.myposts, function (mypost) {
           return _c(
-            "div",
-            { key: mypost.id },
-            [_c("PostCard", { attrs: { postDetails: mypost } })],
-            1
+            "router-link",
+            {
+              key: mypost.id,
+              staticClass: "list-groupitem list-group-item-action",
+              attrs: {
+                to: { name: "single-post", params: { slug: mypost.slug } },
+              },
+            },
+            [_vm._v("\n                " + _vm._s(mypost.title))]
           )
         }),
-      ],
-      2
-    ),
+        1
+      ),
+    ]),
   ])
 }
 var staticRenderFns = []
