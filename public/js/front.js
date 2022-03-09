@@ -2236,6 +2236,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SinglePost',
   data: function data() {
@@ -2294,9 +2295,9 @@ __webpack_require__.r(__webpack_exports__);
 
       //  correzione da rivedere immettendo l'url completo ho finalmente i data corretti
       // ATTENZIONE ALLA GESTIONE ROTTE DA PARTE DI LARAVEL USARE URL COMPLETA NEL CASO
-      axios.get('http://127.0.0.1:8000/api/tags/' + this.$route.params.slug).then(function (response) {
+      axios.get('/api/tags/' + this.$route.params.slug).then(function (response) {
         // console.log(response);
-        _this.tag = response.results;
+        _this.tag = response.data.results;
       });
     }
   },
@@ -3273,8 +3274,13 @@ var render = function () {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm.singlepost.tags.length > 0
-        ? _c(
+      _vm.singlepost.tags <= 0
+        ? _c("div", [
+            _c("span", { staticClass: "badge bg-danger mx-1" }, [
+              _vm._v("Nessuna categoria"),
+            ]),
+          ])
+        : _c(
             "div",
             _vm._l(_vm.singlepost.tags, function (tag) {
               return _c(
@@ -3284,8 +3290,7 @@ var render = function () {
               )
             }),
             0
-          )
-        : _vm._e(),
+          ),
       _vm._v(" "),
       _c("p", [
         _vm._v(

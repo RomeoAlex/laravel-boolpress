@@ -9,14 +9,15 @@
             
             <h2 v-if="singlepost.category">Categoria: {{singlepost.category.name}}</h2>
             <!-- condizionale per gli array vuoti -->
-            <div v-if="singlepost.tags.length > 0">
+            <div v-if="singlepost.tags <= 0  ">
+                <span class="badge bg-danger mx-1">Nessuna categoria</span>
+            </div>
+            <div v-else>
             <span v-for="tag in singlepost.tags" :key="tag.id" class="badge bg-info text-dark mx-1">{{tag.name}}</span>
-
             </div>
             <p>
                 {{singlepost.content}}
             </p>
-            
         </div>
     </section>
 </template>
@@ -32,7 +33,7 @@ export default {
     },  
 
     methods: {
-
+        
          getSinglePost(){
             //  correzione da rivedere immettendo l'url completo ho finalmente i data corretti
             // ATTENZIONE ALLA GESTIONE ROTTE DA PARTE DI LARAVEL USARE URL COMPLETA NEL CASO

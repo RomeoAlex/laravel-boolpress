@@ -37,8 +37,10 @@ class PostController extends Controller
 public function show($slug) {
     // test per vedere lo slug
     // dd($slug);
-    $post = Post::where('slug', '=', $slug)->with(['category', 'tags'])->first();
     // con with vado a selezionare gli attributi category e tags di post !!! CONTROLLARE LA CHIAMATA API CON POSTMAN
+    $post = Post::where('slug', '=', $slug)->with(['category', 'tags'])->first();
+    
+    
     // risposta a json per vue questa soluzione è insufficiente se l'end url non è corretto e punta un elemento che non esiste nel database
     // return response()->json([
     //     'success' => true,
