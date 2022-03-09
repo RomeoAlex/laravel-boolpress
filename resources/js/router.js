@@ -41,8 +41,8 @@ const router = new VueRouter({
             component: SinglePost
         },
         {
-            
-            path: "/tag/:slug",
+            // attenzione alla rotta NON DIMENTICARE DI RIPORTARE CORRETTAMENTE I DATI DALLA API ROUTE::GET
+            path: "/tags/:slug",
             name: "tag-details",
             component: TagDetails
         },

@@ -2272,6 +2272,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_PostCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PostCard.vue */ "./resources/js/components/PostCard.vue");
 //
 //
 //
@@ -2282,11 +2283,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'TagDetails',
+  components: {
+    PostCard: _components_PostCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
-      tag: false
+      tag: false,
+      myposts: []
     };
   },
   methods: {
@@ -2298,6 +2307,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/api/tags/' + this.$route.params.slug).then(function (response) {
         // console.log(response);
         _this.tag = response.data.results;
+        _this.myposts = response.data.results.posts; // console.log(response.data.results.posts);
       });
     }
   },
@@ -3277,7 +3287,7 @@ var render = function () {
       _vm.singlepost.tags <= 0
         ? _c("div", [
             _c("span", { staticClass: "badge bg-danger mx-1" }, [
-              _vm._v("Nessuna categoria"),
+              _vm._v("Nessuna Tag"),
             ]),
           ])
         : _c(
@@ -3323,11 +3333,25 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", [
-    _c("div", { staticClass: "container" }, [
-      _c("h1", [_vm._v("\n            SONO LA TAGSSS PAGEE\n        ")]),
-      _vm._v(" "),
-      _c("h2", [_vm._v(_vm._s(_vm.tag.name))]),
-    ]),
+    _c(
+      "div",
+      { staticClass: "container" },
+      [
+        _c("h1", [_vm._v("\n            SONO LA TAGSSS PAGEE\n        ")]),
+        _vm._v(" "),
+        _c("h2", [_vm._v(_vm._s(_vm.tag.name))]),
+        _vm._v(" "),
+        _vm._l(_vm.myposts, function (mypost) {
+          return _c(
+            "div",
+            { key: mypost.id },
+            [_c("PostCard", { attrs: { postDetails: mypost } })],
+            1
+          )
+        }),
+      ],
+      2
+    ),
   ])
 }
 var staticRenderFns = []
@@ -19537,7 +19561,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     name: "single-post",
     component: _pages_SinglePost_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
-    path: "/tag/:slug",
+    // attenzione alla rotta NON DIMENTICARE DI RIPORTARE CORRETTAMENTE I DATI DALLA API ROUTE::GET
+    path: "/tags/:slug",
     name: "tag-details",
     component: _pages_TagDetails_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
   }, {

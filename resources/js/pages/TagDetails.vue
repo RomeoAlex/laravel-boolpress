@@ -5,15 +5,23 @@
                 SONO LA TAGSSS PAGEE
             </h1>
             <h2>{{tag.name}}</h2>
+            <div v-for="mypost in myposts" :key="mypost.id">
+                <PostCard :postDetails="mypost" />
+            </div>
         </div>
     </section>
 </template>
 <script>
+import PostCard from '../components/PostCard.vue';
 export default {
     name: 'TagDetails',
+    components: {
+            PostCard
+        },
     data: function(){
         return{
-            tag : false
+            tag : false,
+            myposts: []
         }
     },  
 
@@ -26,6 +34,8 @@ export default {
             .then((response) => {
                 // console.log(response);
                 this.tag = response.data.results;
+                this.myposts = response.data.results.posts;
+                // console.log(response.data.results.posts);
             });
           }
     },
