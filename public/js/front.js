@@ -2237,6 +2237,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SinglePost',
   data: function data() {
@@ -3299,12 +3303,18 @@ var render = function () {
             "div",
             _vm._l(_vm.singlepost.tags, function (tag) {
               return _c(
-                "span",
-                { key: tag.id, staticClass: "badge bg-info text-dark mx-1" },
-                [_vm._v(_vm._s(tag.name))]
+                "router-link",
+                {
+                  key: tag.id,
+                  staticClass: "badge bg-info text-dark mx-1",
+                  attrs: {
+                    to: { name: "tag-details", params: { slug: tag.slug } },
+                  },
+                },
+                [_vm._v("\n               " + _vm._s(tag.name) + "\n        ")]
               )
             }),
-            0
+            1
           ),
       _vm._v(" "),
       _c("p", [
@@ -3341,7 +3351,7 @@ var render = function () {
     _c("div", { staticClass: "container" }, [
       _c("h1", [_vm._v("\n            SONO LA TAGSSS PAGEE\n        ")]),
       _vm._v(" "),
-      _c("h2", [_vm._v(_vm._s(_vm.tag.name))]),
+      _c("h2", [_vm._v("Post ordinati per: " + _vm._s(_vm.tag.name))]),
       _vm._v(" "),
       _c(
         "div",
@@ -3351,7 +3361,7 @@ var render = function () {
             "router-link",
             {
               key: mypost.id,
-              staticClass: "list-groupitem list-group-item-action",
+              staticClass: "list-group-item list-group-item-action",
               attrs: {
                 to: { name: "single-post", params: { slug: mypost.slug } },
               },

@@ -13,7 +13,11 @@
                 <span class="badge bg-danger mx-1">Nessuna Tag</span>
             </div>
             <div v-else>
-            <span v-for="tag in singlepost.tags" :key="tag.id" class="badge bg-info text-dark mx-1">{{tag.name}}</span>
+            <!-- <span v-for="tag in singlepost.tags" :key="tag.id" class="badge bg-info text-dark mx-1">{{tag.name}}</span> -->
+            <router-link 
+            v-for="tag in singlepost.tags" :key="tag.id" class="badge bg-info text-dark mx-1" :to="{ name: 'tag-details', params:{ slug: tag.slug } }">
+                   {{tag.name}}
+            </router-link>
             </div>
             <p>
                 {{singlepost.content}}
