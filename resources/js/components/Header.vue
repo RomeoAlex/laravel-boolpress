@@ -17,6 +17,8 @@
                     </li> -->
                    <li v-for="(link,index) in menuLinks" :key="index" class="nav-item">
                         <router-link class="nav-link active" :to="{name: link.name }">{{link.label}}</router-link> 
+
+                        <!-- <router-link class="nav-link active" to="name:home">HOME</router-link>  -->
                     </li>
                 </ul>
             </div>
